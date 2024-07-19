@@ -5,21 +5,18 @@ from collections import Counter
 # Read the CSV file
 df = pd.read_csv('django_crypto_twitter_influencers_tweet.csv',low_memory=False)
 
-# Extract the "full text" column
-
-# Ensure all entries in "full text" column are treated as strings
-texts = df['full_text'].astype(str).fillna('')
-
 # Define a regex pattern to find hashtags
 hashtag_pattern = r'#(\w+)'
 
-# Create a Counter to count occurrences of each hashtag
-hashtag_counter = Counter()
+# Function to find hashtags in a text
+def find_hashtags(text):
+    return re.findall(hashtag_pattern, str(text))
 
-# Iterate over each text and find all hashtags
-for text in texts:
-    hashtags = re.findall(hashtag_pattern, text)
-    hashtag_counter.update(hashtags)
+# Apply the function to the "full text" column and flatten the list
+hashtags = df['full_text'].apply(find_hashtags).explode().dropna().tolist()
+
+# Count occurrences of each hashtag
+hashtag_counter = Counter(hashtags)
 
 # Convert the counter to a sorted list of tuples (index, hashtag, count)
 sorted_hashtags = sorted(hashtag_counter.items(), key=lambda x: x[1], reverse=True)
