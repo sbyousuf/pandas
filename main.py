@@ -12,9 +12,9 @@ def main():
     dollar_pattern = r"\$(?!\d)\w+"
 
     # Process data and save to CSV
-    hashtags_df = sort(hashtag_pattern, df, "sorted_hashtags.csv")
-    mentions_df = sort(mention_pattern, df, "sorted_mentions.csv")
-    dollars_df = sort(dollar_pattern, df, "sorted_dollars.csv")
+    hashtags_df = sort(hashtag_pattern, df, "sample_result\sorted_hashtags.csv")
+    mentions_df = sort(mention_pattern, df, "sample_result\sorted_mentions.csv")
+    dollars_df = sort(dollar_pattern, df, "sample_result\sorted_dollars.csv")
 
     # Plot top 10 dollar words
     plot_top_words(hashtags_df, "Top 10 Hashtags Words", "top_10_hashtags.png")

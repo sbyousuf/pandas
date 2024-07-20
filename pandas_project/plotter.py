@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 
 def plot_top_words(df, title, filename):
@@ -10,5 +11,7 @@ def plot_top_words(df, title, filename):
     plt.xlabel("Count")
     plt.ylabel("Word")
     plt.tight_layout()
-    plt.savefig(filename)
+    result_dir = "sample_result"
+    file_path = os.path.join(result_dir, filename)
+    plt.savefig(file_path)
     plt.show()
