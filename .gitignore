@@ -1,1 +1,3 @@
 django_crypto_twitter_influencers_tweet.csv
+myenv/
+data/*
