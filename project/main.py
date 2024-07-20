@@ -1,7 +1,7 @@
 import pandas as pd
 import re
 from collections import Counter
-
+print(pd.__version__)
 # Read the CSV file
 df = pd.read_csv('django_crypto_twitter_influencers_tweet.csv',low_memory=False)
 
