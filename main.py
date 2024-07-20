@@ -1,11 +1,11 @@
 from pandas_project.sort_function import sort
 from pandas_project.plotter import plot_top_words
-
+import pandas as pd
 
 def main():
     # Load data
-    df = "data/django_crypto_twitter_influencers_tweet.csv"
-
+    input_file = "data/django_crypto_twitter_influencers_tweet.csv"
+    df = pd.read_csv(input_file,usecols=['id_str','full_text'], low_memory=False)
     # Define patterns
     hashtag_pattern = r"#(\w+)"
     mention_pattern = r"@(\w+)"
