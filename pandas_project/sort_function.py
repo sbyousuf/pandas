@@ -11,7 +11,7 @@ def sort(pattern, input_file, output_file):
     def find_words(text):
         return re.findall(pattern, str(text))
 
-    words = df["full_text"].apply(find_words).explode().dropna().tolist()
+    words = df["full_text"].apply(find_words).dropna().tolist()
     counter = Counter(words)
     sorted_list = sorted(counter.items(), key=lambda x: x[1], reverse=True)
     indexed_list = [
