@@ -1,9 +1,9 @@
 import pandas as pd
 import re
 from collections import Counter
-print(pd.__version__)
+
 # Read the CSV file
-df = pd.read_csv('django_crypto_twitter_influencers_tweet.csv',low_memory=False)
+df = pd.read_csv('data\django_crypto_twitter_influencers_tweet.csv',low_memory=False)
 
 # Define a regex pattern to find hashtags
 hashtag_pattern = r'#(\w+)'
@@ -11,6 +11,7 @@ hashtag_pattern = r'#(\w+)'
 # Function to find hashtags in a text
 def find_hashtags(text):
     return re.findall(hashtag_pattern, str(text))
+
 
 # Apply the function to the "full text" column and flatten the list
 hashtags = df['full_text'].apply(find_hashtags).explode().dropna().tolist()
