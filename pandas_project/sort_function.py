@@ -19,5 +19,4 @@ def sort(pattern, input_file, output_file):
     ]
     sorted_df = pd.DataFrame(indexed_list, columns=["Index", "Name", "Count"])
     sorted_df.to_csv(output_file, index=False)
-
-    print(f"The sorted data has been saved to '{output_file}'")
+    return sorted_df
